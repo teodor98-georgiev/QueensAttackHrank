@@ -1,5 +1,5 @@
 public class ChessSettings {
-
+    public int surfCounter = 0;
     public int obsX1 = 2;
     public int obsY1 = 3;
 

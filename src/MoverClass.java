@@ -1,13 +1,12 @@
 public class MoverClass {
-    public int surfCounter = 0;
     ChessSettings cs;
 
 
     public MoverClass(ChessSettings cs) {
         this.cs = cs;
     }
-    public int moveAndCount(int xStep, int yStep) {
-        surfCounter = 0;
+    public int moveAndCountSingle(int xStep, int yStep) {
+        cs.surfCounter = 0;
         Point point = new Point();
         while (true) {
             point.x = point.x + xStep;
@@ -19,7 +18,7 @@ public class MoverClass {
             if (point.x == cs.obsX2 && point.y == cs.obsY2){
                 break;
             }
-            surfCounter++;
+            cs.surfCounter++;
 
             // diagonal edges
             if (point.x == cs.edgeUpLeft[0] && point.y == cs.edgeUpLeft[1]){
@@ -44,7 +43,7 @@ public class MoverClass {
                 break;
             }
         }
-        return surfCounter;
+        return cs.surfCounter;
     }
 }
 
