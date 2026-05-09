@@ -1,10 +1,13 @@
+import java.util.Arrays;
+import java.util.List;
+
 public class MoverClass {
     ChessSettings cs;
-
 
     public MoverClass(ChessSettings cs) {
         this.cs = cs;
     }
+
     public int moveAndCountSingle(int xStep, int yStep) {
         cs.surfCounter = 0;
         Point point = new Point();
@@ -44,6 +47,13 @@ public class MoverClass {
             }
         }
         return cs.surfCounter;
+    }
+
+    public void moveAndCountAll(List<Integer> coordX, List<Integer> coordY){
+        for (int i = 0; i < 8; i++){
+            int freeSurfaces = moveAndCountSingle(coordX.get(i),coordY.get(i));
+            System.out.println(freeSurfaces);
+        }
     }
 }
 
