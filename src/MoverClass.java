@@ -8,8 +8,15 @@ public class MoverClass {
         this.cs = cs;
     }
 
-    public int moveAndCountSingle(int xStep, int yStep) {
-        cs.surfCounter = 0;
+    public void moveAndCountAll(List<Integer> coordX, List<Integer> coordY){
+        for (int i = 0; i < 8; i++){
+            moveAndCountSingle(coordX.get(i),coordY.get(i));
+            // Debug only below, remove on production
+            System.out.println("debug single:" + cs.surfCounter);
+        }
+    }
+
+    public void moveAndCountSingle(int xStep, int yStep) {
         Point point = new Point();
         while (true) {
             point.x = point.x + xStep;
@@ -23,7 +30,7 @@ public class MoverClass {
             }
             cs.surfCounter++;
 
-            // diagonal edges
+            // diagonal edges check
             if (point.x == cs.edgeUpLeft[0] && point.y == cs.edgeUpLeft[1]){
                 break;
             }
@@ -38,7 +45,7 @@ public class MoverClass {
             }
 
 
-            // edges crossly
+            // edges crossly check
             if (point.x == cs.leftXEdge || point.x == cs.rightXEdge){
                 break;
             }
@@ -46,14 +53,9 @@ public class MoverClass {
                 break;
             }
         }
-        return cs.surfCounter;
     }
 
-    public void moveAndCountAll(List<Integer> coordX, List<Integer> coordY){
-        for (int i = 0; i < 8; i++){
-            int freeSurfaces = moveAndCountSingle(coordX.get(i),coordY.get(i));
-            System.out.println(freeSurfaces);
-        }
+    public void PrintOutCounter() {
+        System.out.println(cs.surfCounter);
     }
 }
-

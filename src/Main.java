@@ -17,6 +17,6 @@ public class Main {
         List<Integer> stepsY = Arrays.asList(-1,0,1,1,1,0,-1,-1);
 
         mc.moveAndCountAll(stepsX, stepsY);
-
+        mc.PrintOutCounter();
     }
 }
