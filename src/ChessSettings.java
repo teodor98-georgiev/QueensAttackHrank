@@ -1,36 +1,31 @@
-public class ChessSettings {
-    public int surfCounter = 0;
-    public int obsX1 = 2;
-    public int obsY1 = 3;
+import java.util.Arrays;
+import java.util.List;
 
-    public int obsX2 = 4;
-    public int obsY2 = 5;
+public class ChessSettings {
+
+    Point queenStartPoint = new Point(5,3);
+    public int surfCounter = 0;
+
+    // allowed steps for exercise scope
+    List<Integer> stepsX = Arrays.asList(-1,-1,-1,0,1,1,1,0);
+    List<Integer> stepsY = Arrays.asList(-1,0,1,1,1,0,-1,-1);
 
     // edges diagonally
-    public int[] edgeUpLeft = {1,6};
-    public int[] edgeUpRight = {6,6};
-    public int[] edgeDownLeft = {1,1};
-    public int[] edgeDownRight = {6,1};
+
+    public Point edgeUpLeft = new Point(1,6);
+    public Point edgeUpRight = new Point(6,6);
+    public Point edgeDownLeft = new Point(6,6);
+    public Point edgeDownRight = new Point(6,6);
 
     //edges crossly
-    public int leftXEdge = 1;
-    public int rightXEdge = 6;
-    public int upYedge = 6;
-    public int downYedge = 1;
+    public Point leftXEdge = new Point(1,0);
+    public Point rightXEdge = new Point(6,0);
+    public Point upYedge = new Point(0,6);
+    public Point downYedge = new Point(0,1);
 
-    public ChessSettings(int obsX1, int obsY1, int obsX2, int obsY2, int[] edgeUpLeft, int[] edgeUpRight, int[] edgeDownLeft, int[] edgeDownRight, int leftXEdge,
-                         int rightXEdge, int upYedge, int downYedge) {
-        this.obsX1 = obsX1;
-        this.obsY1 = obsY1;
-        this.obsX2 = obsX2;
-        this.obsY2 = obsY2;
-        this.edgeUpLeft = edgeUpLeft;
-        this.edgeUpRight = edgeUpRight;
-        this.edgeDownLeft = edgeDownLeft;
-        this.edgeDownRight = edgeDownRight;
-        this.leftXEdge = leftXEdge;
-        this.rightXEdge = rightXEdge;
-        this.upYedge = upYedge;
-        this.downYedge = downYedge;
-    }
+    // obstacles coordinates
+    public Point obst1 = new Point(2,3);
+    public Point obst2 = new Point (4,5);
+
+
 }

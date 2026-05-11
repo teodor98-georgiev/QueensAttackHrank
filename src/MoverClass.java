@@ -4,52 +4,54 @@ import java.util.List;
 public class MoverClass {
     ChessSettings cs;
 
+
     public MoverClass(ChessSettings cs) {
         this.cs = cs;
     }
 
-    public void moveAndCountAll(List<Integer> coordX, List<Integer> coordY){
+    public void moveAndCountAll(ChessSettings cs){
         for (int i = 0; i < 8; i++){
-            moveAndCountSingle(coordX.get(i),coordY.get(i));
+            moveAndCountSingle(cs.stepsX.get(i),cs.stepsY.get(i));
             // Debug only below, remove on production
-            System.out.println("debug single:" + cs.surfCounter);
+            //System.out.println("debug single:" + cs.surfCounter);
         }
     }
 
     public void moveAndCountSingle(int xStep, int yStep) {
-        Point point = new Point();
+        Point tempPoint = new Point(cs.queenStartPoint);
         while (true) {
-            point.x = point.x + xStep;
-            point.y = point.y + yStep;
+            tempPoint.x = tempPoint.x + xStep;
+            tempPoint.y = tempPoint.y + yStep;
             // obstacle check
-            if (point.x == cs.obsX1 && point.y == cs.obsY1){
+            if (tempPoint.x == cs.obst1.x && tempPoint.y == cs.obst1.y){
                 break;
             }
-            if (point.x == cs.obsX2 && point.y == cs.obsY2){
+            if (tempPoint.x == cs.obst2.x && tempPoint.y == cs.obst2.y){
                 break;
             }
             cs.surfCounter++;
 
             // diagonal edges check
-            if (point.x == cs.edgeUpLeft[0] && point.y == cs.edgeUpLeft[1]){
+
+            if (tempPoint.x == cs.edgeUpLeft.x && tempPoint.y == cs.edgeUpLeft.y){
                 break;
             }
-            if (point.x == cs.edgeUpRight[0] && point.y == cs.edgeUpRight[1]){
+            if (tempPoint.x == cs.edgeUpRight.x && tempPoint.y == cs.edgeUpRight.y){
                 break;
             }
-            if (point.x == cs.edgeDownLeft[0] && point.y == cs.edgeDownLeft[1]){
+            if (tempPoint.x == cs.edgeDownLeft.x && tempPoint.y == cs.edgeDownLeft.y){
                 break;
             }
-            if (point.x == cs.edgeDownRight[0] && point.y == cs.edgeDownRight[1]){
+            if (tempPoint.x == cs.edgeDownRight.x && tempPoint.y == cs.edgeDownRight.y){
                 break;
             }
 
 
             // edges crossly check
-            if (point.x == cs.leftXEdge || point.x == cs.rightXEdge){
+            if (tempPoint.x == cs.leftXEdge.x || tempPoint.x == cs.rightXEdge.x){
                 break;
             }
-            if (point.y == cs.upYedge || point.y == cs.downYedge){
+            if (tempPoint.y == cs.upYedge.y || tempPoint.y == cs.downYedge.y){
                 break;
             }
         }

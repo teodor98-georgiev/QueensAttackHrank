@@ -8,15 +8,11 @@ public class Main {
         // [row, column] count how many free areas queen has when she moves before hiting obstacle or edge.
 
 
-        ChessSettings cs = new ChessSettings(2,3,4,5, new int[]{1, 6}, new int[]{6,6},  new int[]{1,1}, new int[]{6,1},1,6,
-                6,1);
+        ChessSettings cs = new ChessSettings();
 
         MoverClass mc = new MoverClass(cs);
 
-        List<Integer> stepsX = Arrays.asList(-1,-1,-1,0,1,1,1,0);
-        List<Integer> stepsY = Arrays.asList(-1,0,1,1,1,0,-1,-1);
-
-        mc.moveAndCountAll(stepsX, stepsY);
+        mc.moveAndCountAll(cs);
         mc.PrintOutCounter();
     }
 }
